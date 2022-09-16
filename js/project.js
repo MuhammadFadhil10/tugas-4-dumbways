@@ -2,7 +2,6 @@ let data = [];
 
 const submitBlog = (e) => {
 	e.preventDefault();
-	let techChecked = [];
 	let techStr = '';
 	const projectName = document.getElementById('name-input').value;
 	const startDate = document.getElementById('start-date-input').value;
@@ -22,30 +21,28 @@ const submitBlog = (e) => {
 		projectName,
 		description,
 		techStr,
+		duration: getDuration(startDate, endDate),
 		image,
 		postedAt: 'Baru saja',
 		author: 'Muhammad Fadhil Akbar',
 	};
-	console.log(techStr);
+
 	data.push(project);
-	console.log(techStr);
 
 	blogCardRender();
 };
 
 const blogCardRender = () => {
-	// console.log(data);
-	document.getElementById('blog-container').innerHTML = '';
+	let blogContainer = document.getElementById('blog-container');
+	blogContainer.innerHTML = '';
 	for (let i = 0; i < data.length; i++) {
-		document.getElementById('blog-container').innerHTML += `
+		blogContainer.innerHTML += `
         <div class="blog-card" onclick="goToBlogDetail('/projectDetail.html')">
             <div class="blog-card-header">
                 <img src="${data[i].image}" alt="" srcset="" />
                 <div class="blog-card-title">
                     <h1>${data[i].projectName}</h1>
-                    <p>Diposting pada: ${data[i].postedAt} | ${
-			data[i].author
-		}</p>
+					<p>Duration: ${data[i].duration}</p>
                 </div>
             </div>
             <!-- <div class="blog-card-body"> -->
@@ -72,11 +69,37 @@ const goToBlogDetail = (path) => {
 	a.click();
 };
 
-// const getTechIcon = (techImgName) => {
-// 	let imgTag = '';
-// 	for (let i = 0; i < techImgName; i++) {
-// 		imgTag += `<img src="assets/icon/${techImgName[i]}.png" alt="" srcset="" />`;
-// 	}
-// 	console.log(imgTag);
-// 	return imgTag;
-// };
+const getDuration = (startDate, endDate) => {
+	let duration = null;
+	const timeStart = new Date(startDate).getTime();
+	const timeEnd = new Date(endDate).getTime();
+	const millisecondsMargin = timeEnd - timeStart;
+	const dayMargin = Math.floor(millisecondsMargin / (1000 * 60 * 60 * 24));
+	if (dayMargin < 30) {
+		if (dayMargin === 0) {
+			duration = 'a few hours';
+		} else {
+			duration = `${dayMargin} Day`;
+		}
+	} else {
+		if (dayMargin % 30 === 0) {
+			duration = `${Math.floor(dayMargin / 30)} Month`;
+		} else {
+			duration = `${Math.floor(dayMargin / 30)} Month ${dayMargin % 30} Day`;
+		}
+		if (dayMargin % 365 === 0) {
+			duration = `${Math.floor(dayMargin / 365)} Year`;
+		} else {
+			if (dayMargin % 365 <= 29) {
+				duration = `${Math.floor(dayMargin / 365)} Year ${Math.floor(
+					dayMargin % 365
+				)} Day`;
+			} else {
+				duration = `${Math.floor(dayMargin / 365)} Year ${Math.floor(
+					(dayMargin % 365) / 30
+				)} Month`;
+			}
+		}
+	}
+	return duration;
+};
