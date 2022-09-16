@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="/style/contact.css" />
+		<link rel="stylesheet" href="/style/card.css" />
+		<!-- favicon -->
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="./assets/favicon/apple-touch-icon.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="./assets/favicon/favicon-32x32.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="./assets/favicon/favicon-16x16.png"
+		/>
+		<link rel="manifest" href="/site.webmanifest" />
+		<title>Contact</title>
+	</head>
+	<body>
+		<header>
+			<nav class="nav-container">
+				<div class="nav-left">
+					<ul>
+						<li>
+							<a href="/index.html"
+								><img src="/assets/image/logo.png" alt="" srcset=""
+							/></a>
+						</li>
+						<div class="routes">
+							<li class="list-link">
+								<!-- <div class="list"> -->
+								<a href="/index.html">Home</a>
+								<!-- </div> -->
+							</li>
+							<li class="list-link">
+								<!-- <div class="list"> -->
+								<a href="project.html">My Project</a>
+								<!-- </div> -->
+							</li>
+						</div>
+					</ul>
+				</div>
+				<div class="nav-right">
+					<button class="contact-button">
+						<a href="/contact.html" class="contact-me">Contact me</a>
+					</button>
+				</div>
+			</nav>
+		</header>
+		<section class="container">
+			<h1>GET IN TOUCH</h1>
+			<form action="">
+				<div class="form-control">
+					<label for="input-name">Name</label>
+					<input type="text" id="input-name" placeholder="john doe" />
+				</div>
+				<div class="form-control">
+					<label for="input-email">email</label>
+					<input
+						type="email"
+						name=""
+						id="input-email"
+						placeholder="johndoe@example.com"
+					/>
+				</div>
+				<div class="form-control">
+					<label for="input-phone">Phone number</label>
+					<input type="number" name="" id="input-phone" />
+				</div>
+				<div class="form-control">
+					<label for="input-select">Subject</label>
+					<select id="input-select">
+						<option value="" hidden>Subject</option>
+						<option value="frontend">Frontend</option>
+						<option value="backend">Backend</option>
+						<option value="fullstack">Fullstack</option>
+					</select>
+				</div>
+				<div class="form-control">
+					<label for="input-message">Your Message</label>
+					<textarea name="" id="input-message"></textarea>
+				</div>
+				<button type="button" onclick="submitData()">Submit</button>
+			</form>
+		</section>
+	</body>
+	<script src="/js/contact.js"></script>
+</html>
