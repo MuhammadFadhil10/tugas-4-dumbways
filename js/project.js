@@ -38,7 +38,7 @@ const blogCardRender = () => {
 	document.getElementById('blog-container').innerHTML = '';
 	for (let i = 0; i < data.length; i++) {
 		document.getElementById('blog-container').innerHTML += `
-        <div class="blog-card">
+        <div class="blog-card" onclick="goToBlogDetail('/projectDetail.html')">
             <div class="blog-card-header">
                 <img src="${data[i].image}" alt="" srcset="" />
                 <div class="blog-card-title">
@@ -64,6 +64,9 @@ const blogCardRender = () => {
         </div>
     `;
 	}
+};
+const goToBlogDetail = (path) => {
+	window.location.href = path;
 };
 
 // const getTechIcon = (techImgName) => {
