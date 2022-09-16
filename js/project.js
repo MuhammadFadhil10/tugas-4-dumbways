@@ -66,7 +66,10 @@ const blogCardRender = () => {
 	}
 };
 const goToBlogDetail = (path) => {
-	window.location.href = path;
+	let a = document.createElement('a');
+	a.href = `projectDetail.html`;
+	a.target = '_blank';
+	a.click();
 };
 
 // const getTechIcon = (techImgName) => {
