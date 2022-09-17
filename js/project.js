@@ -1,4 +1,5 @@
 let data = [];
+let error = null;
 
 const submitBlog = (e) => {
 	e.preventDefault();
@@ -9,12 +10,45 @@ const submitBlog = (e) => {
 	const description = document.getElementById('desc-input').value;
 	const technologies = document.getElementsByClassName('checkbox');
 	let image = document.getElementById('file-input').files[0];
-	image = URL.createObjectURL(image);
+	image = image ? URL.createObjectURL(image) : '';
 
 	for (let i = 0; i < technologies.length; i++) {
 		if (technologies[i].checked) {
-			techStr += ` <img src="assets/icon/${technologies[i].name}.png" alt="" srcset="" />`;
+			techStr += ` <img src="assets/icon/${technologies[i].name}.png" alt="${technologies[i].name}-icon" srcset="" />`;
 		}
+	}
+
+	error = validate([
+		{
+			fieldName: 'name',
+			value: projectName,
+		},
+		{
+			fieldName: 'start date',
+			value: startDate,
+		},
+		{
+			fieldName: 'end date',
+			value: endDate,
+		},
+		{
+			fieldName: 'description',
+			value: description,
+		},
+		{
+			fieldName: 'technologies',
+			value: techStr,
+		},
+		{
+			fieldName: 'image',
+			value: image,
+		},
+	]);
+	if (error.length !== 0) {
+		document.getElementById('error-message').innerHTML = error.join(', <br>');
+		return;
+	} else {
+		document.getElementById('error-message').innerHTML = error.join('');
 	}
 
 	let project = {
@@ -102,4 +136,24 @@ const getDuration = (startDate, endDate) => {
 		}
 	}
 	return duration;
+};
+
+const validate = (fieldData) => {
+	let errorMessage = [];
+	for (let i = 0; i < fieldData.length; i++) {
+		if (typeof fieldData[i].value === 'string') {
+			if (fieldData[i].value.trim().length === 0) {
+				document
+					.getElementsByName(`${fieldData[i].fieldName}`)[0]
+					.classList.add('input-error');
+				errorMessage.push(`${fieldData[i].fieldName} field required!!`);
+			} else {
+				document
+					.getElementsByName(`${fieldData[i].fieldName}`)[0]
+					.classList.remove('input-error');
+			}
+		}
+	}
+	console.log(errorMessage);
+	return errorMessage;
 };

@@ -305,3 +305,12 @@ button:hover {
 	color: white;
 	transition: 300ms;
 }
+
+#error-message {
+	color: #e40f20;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.input-error {
+	border: 1px solid #e40f20;
+}

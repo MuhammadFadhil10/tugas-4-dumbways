@@ -61,28 +61,29 @@
 		<!-- content -->
 		<section class="form-container">
 			<h1>ADD MY PROJECT</h1>
+			<p id="error-message"></p>
 			<form onsubmit="submitBlog(event)">
 				<div class="form-control">
 					<label for="name-input">Project Name</label>
-					<input type="text" id="name-input" />
+					<input type="text" id="name-input" name="name" />
 				</div>
 				<div class="form-control date-input">
 					<div>
 						<label for="start-date-input">Start Date</label>
-						<input type="date" id="start-date-input" />
+						<input type="date" id="start-date-input" name="start date" />
 					</div>
 					<div>
 						<label for="end-date-input">End Date</label>
-						<input type="date" id="end-date-input" />
+						<input type="date" id="end-date-input" name="end date" />
 					</div>
 				</div>
 				<div class="form-control">
 					<label for="desc-input">Description</label>
-					<textarea id="desc-input"></textarea>
+					<textarea id="desc-input" name="description"></textarea>
 				</div>
 				<div class="form-control">
 					<label for="">technologies</label>
-					<div class="checkbox-input">
+					<div class="checkbox-input" name="technologies">
 						<div>
 							<span>
 								<input
@@ -126,7 +127,7 @@
 					</div>
 				</div>
 				<div class="form-control file-input-container">
-					<label for="file-input" class="custom-file-upload"
+					<label for="file-input" class="custom-file-upload" name="image"
 						><span>choose</span>
 						<img src="/assets/icon/attach.svg" alt="" srcset="" />
 					</label>
