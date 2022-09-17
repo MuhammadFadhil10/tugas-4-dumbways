@@ -12,9 +12,12 @@ const submitBlog = (e) => {
 	let image = document.getElementById('file-input').files[0];
 	image = image ? URL.createObjectURL(image) : '';
 
+	console.log(endDate < startDate);
+
 	for (let i = 0; i < technologies.length; i++) {
 		if (technologies[i].checked) {
-			techStr += ` <img src="assets/icon/${technologies[i].name}.png" alt="${technologies[i].name}-icon" srcset="" />`;
+			techStr += ` <img src="assets/icon/${technologies[i].name}.png" 
+			alt="${technologies[i].name}-icon" srcset="" />`;
 		}
 	}
 
@@ -109,6 +112,7 @@ const getDuration = (startDate, endDate) => {
 	const timeEnd = new Date(endDate).getTime();
 	const millisecondsMargin = timeEnd - timeStart;
 	const dayMargin = Math.floor(millisecondsMargin / (1000 * 60 * 60 * 24));
+
 	if (dayMargin < 30) {
 		if (dayMargin === 0) {
 			duration = 'a few hours';
@@ -116,10 +120,13 @@ const getDuration = (startDate, endDate) => {
 			duration = `${dayMargin} Day`;
 		}
 	} else {
-		if (dayMargin % 30 === 0) {
-			duration = `${Math.floor(dayMargin / 30)} Month`;
-		} else {
-			duration = `${Math.floor(dayMargin / 30)} Month ${dayMargin % 30} Day`;
+		if (dayMargin < 365) {
+			if (dayMargin % 30 === 0) {
+				duration = `${Math.floor(dayMargin / 30)} Month`;
+			} else {
+				duration = `${Math.floor(dayMargin / 30)} Month ${dayMargin % 30} Day`;
+			}
+			return duration;
 		}
 		if (dayMargin % 365 === 0) {
 			duration = `${Math.floor(dayMargin / 365)} Year`;
@@ -148,12 +155,28 @@ const validate = (fieldData) => {
 					.classList.add('input-error');
 				errorMessage.push(`${fieldData[i].fieldName} field required!!`);
 			} else {
-				document
-					.getElementsByName(`${fieldData[i].fieldName}`)[0]
-					.classList.remove('input-error');
+				if (fieldData[i].fieldName === 'end date') {
+					if (fieldData[i - 1].value > fieldData[i].value) {
+						document
+							.getElementsByName(`${fieldData[i].fieldName}`)[0]
+							.classList.add('input-error');
+						errorMessage.push(
+							`${fieldData[i].fieldName} cant't be more backward than ${
+								fieldData[i - 1].fieldName
+							}!!`
+						);
+					} else {
+						document
+							.getElementsByName(`${fieldData[i].fieldName}`)[0]
+							.classList.remove('input-error');
+					}
+				} else {
+					document
+						.getElementsByName(`${fieldData[i].fieldName}`)[0]
+						.classList.remove('input-error');
+				}
 			}
 		}
 	}
-	console.log(errorMessage);
 	return errorMessage;
 };
