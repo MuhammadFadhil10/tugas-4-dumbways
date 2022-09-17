@@ -355,24 +355,24 @@ button:hover {
 		padding: 0 5px 10px 5px;
 		box-sizing: border-box;
 		width: 100%;
-		height: 350px;
+		height: 500px;
 		display: flex;
 		flex-direction: column;
-		justify-content: space-between;
-		gap: 0;
+		justify-content: flex-start;
+		/* gap: 0; */
 		background-color: #e1e1e2;
 		border-radius: 10px;
 	}
 	.blog-card-header {
-		height: 50%;
+		height: 60%;
 		width: 100%;
 		display: flex;
+		gap: 10px;
 		flex-direction: column;
-		/* background-color: aqua; */
 	}
 	.blog-card-header img {
 		width: 100%;
-		height: 70%;
+		height: 75%;
 	}
 
 	.blog-desc,
@@ -381,7 +381,7 @@ button:hover {
 		display: flex;
 	}
 	.blog-desc {
-		height: 80px;
+		height: 100px !important;
 		word-break: break-all;
 		overflow-y: hidden;
 	}
