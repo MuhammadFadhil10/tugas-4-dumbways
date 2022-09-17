@@ -104,3 +104,22 @@ button:hover {
 	background-color: #f0959d;
 	transition: 300ms;
 }
+
+/* responsive */
+@media (max-width: 800px) {
+	.container {
+		padding: 10px 0;
+		gap: 1rem;
+		width: 95%;
+	}
+
+	/* form */
+	form {
+		width: 95%;
+	}
+	form button {
+		font-weight: lighter;
+		letter-spacing: 2px;
+		border-radius: 5px;
+	}
+}

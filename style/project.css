@@ -314,3 +314,90 @@ button:hover {
 .input-error {
 	border: 1px solid #e40f20;
 }
+
+/* responsive */
+@media (max-width: 800px) {
+	.form-container {
+		height: 100%;
+		padding-bottom: 50px;
+		gap: 1rem;
+	}
+	form {
+		height: 70%;
+		width: 90%;
+		gap: 2rem;
+	}
+	.checkbox-input {
+		gap: 0;
+		width: 100%;
+		align-items: center;
+		justify-content: space-between !important;
+	}
+
+	/* card */
+
+	.blog-list-container {
+		padding: 2rem 0;
+		gap: 1rem;
+	}
+
+	.blog-card-container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		width: 90%;
+		height: 100%;
+		gap: 0;
+		/* background-color: red; */
+	}
+	.blog-card {
+		margin-bottom: 2rem;
+		box-shadow: 10px 10px 5px #0000002c;
+		padding: 0 5px 10px 5px;
+		box-sizing: border-box;
+		width: 100%;
+		height: 350px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: 0;
+		background-color: #e1e1e2;
+		border-radius: 10px;
+	}
+	.blog-card-header {
+		height: 50%;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		/* background-color: aqua; */
+	}
+	.blog-card-header img {
+		width: 100%;
+		height: 70%;
+	}
+
+	.blog-desc,
+	.blog-tech {
+		height: 20%;
+		display: flex;
+	}
+	.blog-desc {
+		height: 80px;
+		word-break: break-all;
+		overflow-y: hidden;
+	}
+
+	.blog-icon-list {
+		justify-content: center;
+		align-self: center;
+	}
+	.blog-icon-list img {
+		width: 25px;
+		height: 25px;
+	}
+
+	.blog-card-action button {
+		font-size: 1.2rem;
+		height: 35px;
+	}
+}
