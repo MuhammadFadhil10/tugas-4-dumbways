@@ -5,11 +5,6 @@ const submitData = (e) => {
 	const phoneValue = document.querySelector('#input-phone').value;
 	const subjectValue = document.querySelector('#input-select').value;
 	const messageValue = document.querySelector('#input-message').value;
-	console.log(typeof nameValue);
-	console.log(typeof emailValue);
-	console.log(typeof phoneValue);
-	console.log(typeof subjectValue);
-	console.log(typeof messageValue);
 
 	const error = validate([
 		{
@@ -33,7 +28,6 @@ const submitData = (e) => {
 			value: messageValue,
 		},
 	]);
-	console.log(error);
 	if (error.length !== 0) {
 		document.getElementById('error-message').innerHTML = error.join(', <br>');
 		return;
@@ -44,7 +38,8 @@ const submitData = (e) => {
 	let emailReceiver = 'johndoe@gmail.com';
 
 	let a = document.createElement('a');
-	a.href = `mailto:${emailReceiver}?subject=${subjectValue}&body=Hallo nama saya ${nameValue}, ${messageValue}, silahkan kontak ke nomor ${phoneValue}`;
+	a.href = `mailto:${emailReceiver}?subject=${subjectValue}&body=Hallo nama saya ${nameValue}, ${messageValue},
+		silahkan kontak ke nomor ${phoneValue}`;
 	a.target = '_blank';
 	a.click();
 };

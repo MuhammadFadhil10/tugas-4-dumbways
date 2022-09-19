@@ -210,7 +210,7 @@ body {
 }
 
 .image-card {
-	border: 1px solid gray;
+	border: 1px solid #80808067;
 	padding: 10px;
 	box-sizing: border-box;
 	display: flex;

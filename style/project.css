@@ -210,9 +210,13 @@ button:hover {
 	background-color: #e1e1e2;
 	border-radius: 10px;
 }
+.blog-card:hover {
+	cursor: pointer;
+	scale: 1.01;
+	transition: 300ms;
+}
 .blog-card-header {
 	height: 60%;
-	/* background-color: aqua; */
 }
 .blog-card-header img {
 	display: block;
