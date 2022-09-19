@@ -1,5 +1,4 @@
 let data = [];
-let error = null;
 
 const submitBlog = (e) => {
 	e.preventDefault();
@@ -12,16 +11,14 @@ const submitBlog = (e) => {
 	let image = document.getElementById('file-input').files[0];
 	image = image ? URL.createObjectURL(image) : '';
 
-	console.log(endDate < startDate);
-
 	for (let i = 0; i < technologies.length; i++) {
 		if (technologies[i].checked) {
 			techStr += ` <img src="assets/icon/${technologies[i].name}.png" 
-			alt="${technologies[i].name}-icon" srcset="" />`;
+			alt="${technologies[i].name}-icon"/>`;
 		}
 	}
 
-	error = validate([
+	const error = validate([
 		{
 			fieldName: 'name',
 			value: projectName,
@@ -60,8 +57,6 @@ const submitBlog = (e) => {
 		techStr,
 		duration: getDuration(startDate, endDate),
 		image,
-		postedAt: 'Baru saja',
-		author: 'Muhammad Fadhil Akbar',
 	};
 
 	data.push(project);
@@ -126,19 +121,19 @@ const getDuration = (startDate, endDate) => {
 			} else {
 				duration = `${Math.floor(dayMargin / 30)} Month ${dayMargin % 30} Day`;
 			}
-			return duration;
-		}
-		if (dayMargin % 365 === 0) {
-			duration = `${Math.floor(dayMargin / 365)} Year`;
 		} else {
-			if (dayMargin % 365 <= 29) {
-				duration = `${Math.floor(dayMargin / 365)} Year ${Math.floor(
-					dayMargin % 365
-				)} Day`;
+			if (dayMargin % 365 === 0) {
+				duration = `${Math.floor(dayMargin / 365)} Year`;
 			} else {
-				duration = `${Math.floor(dayMargin / 365)} Year ${Math.floor(
-					(dayMargin % 365) / 30
-				)} Month`;
+				if (dayMargin % 365 <= 29) {
+					duration = `${Math.floor(dayMargin / 365)} Year ${Math.floor(
+						dayMargin % 365
+					)} Day`;
+				} else {
+					duration = `${Math.floor(dayMargin / 365)} Year ${Math.floor(
+						(dayMargin % 365) / 30
+					)} Month`;
+				}
 			}
 		}
 	}
@@ -148,33 +143,31 @@ const getDuration = (startDate, endDate) => {
 const validate = (fieldData) => {
 	let errorMessage = [];
 	for (let i = 0; i < fieldData.length; i++) {
-		if (typeof fieldData[i].value === 'string') {
-			if (fieldData[i].value.trim().length === 0) {
-				document
-					.getElementsByName(`${fieldData[i].fieldName}`)[0]
-					.classList.add('input-error');
-				errorMessage.push(`${fieldData[i].fieldName} field required!!`);
-			} else {
-				if (fieldData[i].fieldName === 'end date') {
-					if (fieldData[i - 1].value > fieldData[i].value) {
-						document
-							.getElementsByName(`${fieldData[i].fieldName}`)[0]
-							.classList.add('input-error');
-						errorMessage.push(
-							`${fieldData[i].fieldName} cant't be more backward than ${
-								fieldData[i - 1].fieldName
-							}!!`
-						);
-					} else {
-						document
-							.getElementsByName(`${fieldData[i].fieldName}`)[0]
-							.classList.remove('input-error');
-					}
+		if (fieldData[i].value.trim().length === 0) {
+			document
+				.getElementsByName(`${fieldData[i].fieldName}`)[0]
+				.classList.add('input-error');
+			errorMessage.push(`${fieldData[i].fieldName} field required!!`);
+		} else {
+			if (fieldData[i].fieldName === 'end date') {
+				if (fieldData[i - 1].value > fieldData[i].value) {
+					document
+						.getElementsByName(`${fieldData[i].fieldName}`)[0]
+						.classList.add('input-error');
+					errorMessage.push(
+						`${fieldData[i].fieldName} cant't be more backward than ${
+							fieldData[i - 1].fieldName
+						}!!`
+					);
 				} else {
 					document
 						.getElementsByName(`${fieldData[i].fieldName}`)[0]
 						.classList.remove('input-error');
 				}
+			} else {
+				document
+					.getElementsByName(`${fieldData[i].fieldName}`)[0]
+					.classList.remove('input-error');
 			}
 		}
 	}

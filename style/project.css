@@ -13,9 +13,7 @@ h1,
 .form-container {
 	width: auto;
 	height: 100vh;
-	/* padding-top: 5rem; */
 	padding-top: 100px;
-	/* background-color: red; */
 	display: flex;
 	justify-content: flex-start;
 	flex-direction: column;
@@ -27,7 +25,6 @@ form {
 	flex-direction: column;
 	gap: 1.2rem;
 	align-items: center;
-	/* background-color: blueviolet; */
 	height: 70%;
 	width: 45%;
 }
