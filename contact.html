@@ -39,14 +39,10 @@
 						</li>
 						<div class="routes">
 							<li class="list-link">
-								<!-- <div class="list"> -->
 								<a href="/index.html">Home</a>
-								<!-- </div> -->
 							</li>
 							<li class="list-link">
-								<!-- <div class="list"> -->
 								<a href="project.html">My Project</a>
-								<!-- </div> -->
 							</li>
 						</div>
 					</ul>
@@ -60,27 +56,33 @@
 		</header>
 		<section class="container">
 			<h1>GET IN TOUCH</h1>
-			<form action="">
+			<p id="error-message"></p>
+			<form onsubmit="submitData(event)">
 				<div class="form-control">
 					<label for="input-name">Name</label>
-					<input type="text" id="input-name" placeholder="john doe" />
+					<input
+						type="text"
+						id="input-name"
+						placeholder="john doe"
+						name="name"
+					/>
 				</div>
 				<div class="form-control">
 					<label for="input-email">email</label>
 					<input
 						type="email"
-						name=""
+						name="email"
 						id="input-email"
 						placeholder="johndoe@example.com"
 					/>
 				</div>
 				<div class="form-control">
 					<label for="input-phone">Phone number</label>
-					<input type="number" name="" id="input-phone" />
+					<input type="number" name="phone-number" id="input-phone" />
 				</div>
 				<div class="form-control">
 					<label for="input-select">Subject</label>
-					<select id="input-select">
+					<select id="input-select" name="subject">
 						<option value="" hidden>Subject</option>
 						<option value="frontend">Frontend</option>
 						<option value="backend">Backend</option>
@@ -89,9 +91,9 @@
 				</div>
 				<div class="form-control">
 					<label for="input-message">Your Message</label>
-					<textarea name="" id="input-message"></textarea>
+					<textarea id="input-message" name="message"></textarea>
 				</div>
-				<button type="button" onclick="submitData()">Submit</button>
+				<button>Submit</button>
 			</form>
 		</section>
 	</body>

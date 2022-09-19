@@ -94,6 +94,7 @@ const blogCardRender = () => {
     `;
 	}
 };
+
 const goToBlogDetail = (path) => {
 	let a = document.createElement('a');
 	a.href = `projectDetail.html`;
